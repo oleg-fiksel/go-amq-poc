@@ -1,11 +1,12 @@
 package main
 
 import stomp "github.com/go-stomp/stomp"
+import "os"
 import "fmt"
 
 //Connect to ActiveMQ and produce messages
 func main() {
-	conn, err := stomp.Dial("tcp", "localhost:61613")
+	conn, err := stomp.Dial("tcp", os.Getenv("AMQ_ADDRESS"))
 	if err != nil {
 		fmt.Println(err)
 	}
